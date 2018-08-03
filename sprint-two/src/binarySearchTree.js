@@ -1,19 +1,49 @@
 var BinarySearchTree = function(value) {
   var newTree = Object.create(BinarySearchTree.searchTreeMethods);
-  newTree.left
+  newTree.value = value;
+  newTree.left = null;
+  newTree.right = null;
+  
+  return newTree;
 };
 
-var searchTreeMethods = {};
+BinarySearchTree.searchTreeMethods = {};
 
-searchTreeMethods.insert = function(value) {
+BinarySearchTree.searchTreeMethods.insert = function(value) {
   //place value into correct position
+  if (value < this.value) {
+    if (this.left === null) {
+      this.left = BinarySearchTree(value);
+    } else {
+      this.left.insert(value);
+    }
+  } else if (value > this.value) {
+    if (this.right === null) {
+      this.right = BinarySearchTree(value);
+    } else {
+      this.right.insert(value);
+    }
+  } else {
+    console.log('Tried to input repeated value');
+  }
 }
 
-searchTreeMethods.contains = function(value) {
+BinarySearchTree.searchTreeMethods.contains = function(value) {
   // returns a boolean
+  if (value === this.value) {
+    return true;
+  }
+  if (value < this.value) {
+    if (this.left === null) {
+      return false;
+    }
+    return this.left.contains(value);
+  }
+  
+  return false;
 }
 
-searchTreeMethods.depthFirstLog = function(callback) {
+BinarySearchTree.searchTreeMethods.depthFirstLog = function(callback) {
   // Accepts a callback and executes it on every value in tree
 }
 /*
