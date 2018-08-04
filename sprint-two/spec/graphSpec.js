@@ -69,7 +69,14 @@ describe('graph', function() {
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
   
+  // Additional test
   it('should be able to handle strings as nodes', function() {
-    
-  })
+    graph.addNode('hello');
+    graph.addNode('world');
+    graph.addEdge('hello','world');
+    expect(graph.contains('hello')).to.equal(true);
+    expect(graph.contains('world')).to.equal(true);
+    expect(graph.contains('other string')).to.equal(false);
+    expect(graph.hasEdge('hello', 'world')).to.equal(true);
+  });
 });

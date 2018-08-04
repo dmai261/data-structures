@@ -1,17 +1,17 @@
-var Tree = function(value) {
+var Tree = function(value, parent = null) {
   var newTree = {};
   newTree.value = value;
   _.extend(newTree, treeMethods);
   // your code here
   newTree.children = [];  // fix me
-
+  newTree.parent = parent;
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  this.children.push(Tree(value));
+  this.children.push(Tree(value, this));
 };
 
 treeMethods.contains = function(target) {

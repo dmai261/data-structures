@@ -51,12 +51,14 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
   
+
+  // add more tests here to test the functionality of linkedList
+  
   it('can handle strings as values', function() {
     linkedList.addToTail('hello');
     linkedList.addToTail('world');
     expect(linkedList.contains('hello')).to.equal(true);
     expect(linkedList.contains('world')).to.equal(true);
-  })
-
-  // add more tests here to test the functionality of linkedList
+  });
+  
 });

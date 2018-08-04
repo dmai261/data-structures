@@ -3,6 +3,8 @@
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
+  this.counter = 0;
+  //this.record = [];
 };
 
 HashTable.prototype.insert = function(k, v) {
@@ -25,7 +27,32 @@ HashTable.prototype.insert = function(k, v) {
     arrayToInsert.push([k, v]);
   }
   
+  if (this.counter >= (this._limit * 0.75)) {
+    var prevStorage = this._storage;
+    this._limit *= 2;
+    this._storage = LimitedArray(this._limit);
+    this.counter = 0;
+    var hashObj = this;
+    console.log(hashObj);
+    prevStorage.each(function(item) {
+      if (item !== undefined) {
+        item.forEach(function(element) {
+          hashObj.insert(element[0], element[1]);
+        }); // [['steven', 'tyler'], ['mr', 'doob']];
+      }
+    });
+    // for (var i = 0; i < this._limit / 2; i++) {
+    //   var itemsToInsert = prevStorage.get(i);
+    //   if (itemsToInsert !== undefined) {
+    //     itemsToInsert.each;
+    //   }
+    // }
+    // put items from prevStorage into larger storage
+    
+  }
+  
   this._storage.set(index, arrayToInsert);
+  this.counter++;
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -58,6 +85,7 @@ HashTable.prototype.remove = function(k) {
   }
   
   this._storage.set(index, targetArrayAtIndex);
+  this.counter--;
 };
 
 
