@@ -38,13 +38,23 @@ BinarySearchTree.searchTreeMethods.contains = function(value) {
       return false;
     }
     return this.left.contains(value);
+  } else if (value > this.value) {
+    if (this.right === null) {
+      return false;
+    }
+    return this.right.contains(value);
   }
-  
-  return false;
 }
 
 BinarySearchTree.searchTreeMethods.depthFirstLog = function(callback) {
   // Accepts a callback and executes it on every value in tree
+  callback(this.value);
+  if (this.left !== null) {
+    this.left.depthFirstLog(callback);
+  }
+  if (this.right !== null) {
+    this.right.depthFirstLog(callback);
+  }
 }
 /*
 A .left property, a binary search tree (BST) where all values 
