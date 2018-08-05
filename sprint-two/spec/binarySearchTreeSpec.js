@@ -37,4 +37,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+  
+  // Additional test
+  it('should have a parent property', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.left.right.parent.value).to.equal(2);
+    expect(binarySearchTree.right.left.parent.value).to.equal(7);
+    expect(binarySearchTree.parent).to.equal(null);
+  });
 });

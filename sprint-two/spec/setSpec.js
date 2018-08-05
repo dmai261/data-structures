@@ -77,4 +77,12 @@ describe('set', function() {
     expect(set.contains(NaN)).to.equal(false);
     
   });
+  
+  // Additional test
+  it('should not add the same value twice', function() {
+    set.add('Mel Gibson');
+    set.add('Mel Gibson');
+    set.remove('Mel Gibson');
+    expect(set.contains('Mel Gibson')).to.equal(false);
+  });
 });

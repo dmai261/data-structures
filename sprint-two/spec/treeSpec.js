@@ -50,4 +50,12 @@ describe('tree', function() {
     expect(tree.children[0].children[0].parent.value).to.equal(5);
     expect(tree.children[1].children[0].parent.value).to.equal(6);
   });
+  
+  // Additional test
+  it('should be able to take strings as the data value', function() {
+    tree.addChild('hello');
+    tree.addChild('world');
+    expect(tree.children[0].value).to.equal('hello');
+    expect(tree.children[1].value).to.equal('world');
+  });
 });

@@ -33,7 +33,6 @@ Graph.prototype.removeNode = function(node) {
       }
     }
   }
-  
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -75,5 +74,17 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+ 
+/*
+addNode: O(1)
+contains: O(n)
+removeNode:
+  best case: O(n)
+  worst case: O(n^2)
+hasEdge: O(n)
+addEdge: O(n)
+removeEdge: O(n)
+forEachNode: assuming callback is constant, O(n)
+*/
 
 

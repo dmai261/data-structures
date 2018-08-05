@@ -73,4 +73,20 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+  
+  // Additional test
+
+  it ('should not resize when adding many items of the same key', function() {
+    var people = [['Dr.', 'Tyler'], ['Dr.', 'Harrison'], ['Dr.', 'Doob'], ['Dr.', 'Sunshine'], ['Dr.', 'Resig'], ['Dr.', 'Eich'], ['Dr.', 'Turing']];
+    _.each(people, function(person) {
+        var firstName = person[0];
+        var lastName = person[1];
+        hashTable.insert(firstName, lastName);
+        expect(hashTable.retrieve(firstName)).to.equal(lastName);
+      });
+      expect(hashTable._limit).to.equal(8);
+  });
+
 });
+
+
